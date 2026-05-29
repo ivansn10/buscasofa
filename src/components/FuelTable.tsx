@@ -19,7 +19,6 @@ const FuelTable = ({ stations }) => {
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
 
-
   // Provincias y ciudades únicas
   const provinces = useMemo(
     () => Array.from(new Set(stations.map(s => s.Provincia))).sort(),
@@ -81,6 +80,12 @@ const FuelTable = ({ stations }) => {
     setCurrentPage(1);
   }, [selectedProvince, selectedCity, selectedFuel]);
 
+  // Limpiar todos los filtros
+  const handleClearFilters = () => {
+    setSelectedProvince('');
+    setSelectedCity('');
+    setSelectedFuel('');
+  };
 
   return (
     <div>
@@ -94,6 +99,7 @@ const FuelTable = ({ stations }) => {
         onProvinceChange={setSelectedProvince}
         onCityChange={setSelectedCity}
         onFuelChange={setSelectedFuel}
+        onClearFilters={handleClearFilters}
       />
       <table className="fuel-table">
         <thead>

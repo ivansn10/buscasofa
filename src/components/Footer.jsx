@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>
+    <footer>
         <h2>Miembros del equipo:</h2>
         <ul>
             <li>Javier García</li>
@@ -11,7 +11,7 @@ const Footer = () => {
             <li>Javier Pérez</li>
             <li>Javier Rodríguez</li>
         </ul>
-    </div>
+    </footer>
   )
 }
 
