@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+// @ts-ignore: Allow importing CSS without type declarations
 import './Home.css'
 import { COMUNIDADES_AUTONOMAS } from '../apis/fuelApiLib'
 
@@ -6,7 +7,13 @@ import { COMUNIDADES_AUTONOMAS } from '../apis/fuelApiLib'
 const FUEL_TYPES = [
   { key: 'Precio Gasoleo A', label: 'Gasóleo A' },
   { key: 'Precio Gasolina 95 E5', label: 'Gasolina 95 E5' },
-];
+] as const;
+
+type FuelKey = typeof FUEL_TYPES[number]['key'];
+
+type Station = Record<FuelKey, string> & {
+  IDCCAA: string | number;
+};
 
 /**
  * Calcula el valor medio de un vector de valores formateados como string
@@ -20,7 +27,7 @@ function getAverage(values: string[]) {
 }
 
 
-const Home = ({ stations }) => {
+const Home = ({ stations, loading = false }: { stations: Station[]; loading?: boolean }) => {
 
   console.log(stations);
 
@@ -57,6 +64,7 @@ const Home = ({ stations }) => {
       <div className='description'>
         El mejor buscador de precios de combustible de España.
       </div>
+      {loading && <div className='loading'>Cargando datos...</div>}
 
       <h2 className='resumen-nacional'>Resumen nacional de precios</h2>
       <table className='resumen-nacional'>

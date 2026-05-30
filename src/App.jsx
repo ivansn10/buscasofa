@@ -11,6 +11,7 @@ import Header from './components/Header';
 import FuelMap from './components/FuelMap';
 import About from './components/About';
 import Home from './components/Home';
+import NotFound from './components/NotFound';
 import StationDetail from './components/StationDetail';
 import FuelTable from './components/FuelTable';
 import Register from './components/Register';
@@ -62,23 +63,18 @@ function App() {
   return (
     <BrowserRouter>
       <Header user={user} />
-      {
-        loading && <div className="loading">Cargando...</div>
-      }
-      {
-        error && <div className="error">Error: {error}</div>
-      }
-      {!loading && !error && (
-        <Routes>
-          <Route path="/registro" element={<Register />} />
-          <Route path="/login" element={<Login onLogin={setUser} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/" element={<Home stations={stations} />} />
-          <Route path="/mapa" element={<FuelMap stations={stations} />} />
-          <Route path="/lista" element={<FuelTable stations={stations} />} />
-          <Route path="/station/:id" element={<StationDetail stations={stations} user={user} />} />
-        </Routes>
-      )}
+      {error && <div className="error">Error: {error}</div>}
+      <Routes>
+        <Route path="/registro" element={<Register />} />
+        <Route path="/login" element={<Login onLogin={setUser} />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Home stations={stations} loading={loading} />} />
+        <Route path="/mapa" element={<FuelMap stations={stations} />} />
+        <Route path="/lista" element={<FuelTable stations={stations} />} />
+        <Route path="/station/:id" element={<StationDetail stations={stations} user={user} />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {loading && !error && <div className="loading">Cargando...</div>}
       <Footer />
     </BrowserRouter>
   )

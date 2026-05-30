@@ -5,11 +5,11 @@ describe('Evaluación de la aplicación - Equipo 23', () => {
     cy.visit('/'); 
     
     cy.get('footer')
-      .should('contain.text', 'Javier García')
-      .and('contain.text', 'Javier López')
-      .and('contain.text', 'Javier Martínez')
-      .and('contain.text', 'Javier Pérez')
-      .and('contain.text', 'Javier Rodríguez');
+      .should('contain.text', 'Ivan Serrano')
+      .and('contain.text', 'Joaquín Tolós')
+      .and('contain.text', 'Ramón Alarcón')
+      .and('contain.text', 'Miguel Garfia')
+      .and('contain.text', 'Guillermo Murciano');
   });
 
   // PRUEBA 2: Sección About
@@ -20,11 +20,11 @@ describe('Evaluación de la aplicación - Equipo 23', () => {
     cy.get('#info').should('contain.text', 'equipo nº 23');
 
     // Comprobamos que están los nombres y una descripción de su aportación
-    cy.contains('Javier García').parent().should('contain.text', 'Configuración inicial de la base de datos MySQL');
-    cy.contains('Javier López').parent().should('contain.text', 'Desarrollo del backend en Node.js');
-    cy.contains('Javier Martínez').parent().should('contain.text', 'Diseño de la interfaz y estilos CSS');
-    cy.contains('Javier Pérez').parent().should('contain.text', 'Integración del mapa y geolocalización');
-    cy.contains('Javier Rodríguez').parent().should('contain.text', 'Implementación de pruebas con Cypress');
+    cy.contains('Ivan Serrano').parent().should('contain.text', 'Configuración inicial de la base de datos MySQL');
+    cy.contains('Joaquín Tolós').parent().should('contain.text', 'Desarrollo del backend en Node.js');
+    cy.contains('Ramón Alarcón').parent().should('contain.text', 'Diseño de la interfaz y estilos CSS');
+    cy.contains('Miguel Garfia').parent().should('contain.text', 'Integración del mapa y geolocalización');
+    cy.contains('Guillermo Murciano').parent().should('contain.text', 'Implementación de pruebas con Cypress');
   });
 
     // PRUEBA 3: Mejora en los filtros (Botón de limpiar filtros)
